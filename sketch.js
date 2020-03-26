@@ -1,14 +1,16 @@
 //let array = [];
 //let backgroundColor = 200;
-let noiseOffset = 0.0;
-let strokeWidth = 5;
-var c1,c2;
+//let noiseOffset = 0.0;
+//let strokeWidth = 5;
+let c1,c2;
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // Define colors
-  c1 = color(255, 204, 0);
-  c2 = color(255);
+
+  c1= color(' #99cccc');
+  c2= color('#C2D3FD');
   setGradient(c1, c2);
 
 }
@@ -16,17 +18,29 @@ function setup() {
 
 function draw() {
 
-  strokeWeight(strokeWidth);
+  //strokeWeight(strokeWidth);
 
-  noiseOffset += 0.05;
-  strokeWidth = noise (noiseOffset) * 50;
-
-
+   // noiseOffset += 0.05;
+   // ellipse = noise (noiseOffset) * 50;
 
 
-  stroke(map(mouseX, 0, 600, 0, 255, true))
-  line (width - mouseX, height - mouseY, width - pmouseX, height - pmouseY);
-  line (mouseX, mouseY, pmouseX, pmouseY);
+  stroke('#FFEA13');
+
+  ellipse(mouseX, mouseY, 30, 30);
+
+  let speed = abs(winMouseX - pwinMouseX);
+  //change the size of the circle
+  //according to the horizontal speed
+  stroke('#FFB8EE');
+  ellipse(50, 50,20 + speed * 20, 20 + speed * 20);
+  ellipse(50,windowHeight, 20 + speed * 20, 20 + speed * 20);
+  ellipse(windowWidth,50, 20 + speed * 20, 20 + speed * 20);
+  ellipse(windowWidth,windowHeight, 20 + speed * 20, 20 + speed * 20);
+
+
+  //stroke(map(mouseX, 0, 600, 0, 255, true))
+  // line (width - mouseX, height - mouseY, width - pmouseX, height - pmouseY);
+  // line(mouseX, mouseY, pmouseX, pmouseY);
   //* means they are the one.
   //* if (mouseIsPressed){
     // minus equal is going to decrease backgroundColor by 2 each frame
@@ -52,13 +66,15 @@ function draw() {
 function setGradient(c1, c2) {
 // noprotect
 noFill();
+
 for (var y = 0; y < height; y++) {
-  var inter = map(y, 0, height, 0, 1);
-  var c = lerpColor(c1, c2, inter);
+  let inter = map(y, 0, height, 0, 1);
+  let c = lerpColor(c1, c2, inter);
   stroke(c);
   line(0, y, width, y);
 }
 }
+
 
 function keyTyped(){
   if(key === 's'){

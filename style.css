@@ -3,8 +3,6 @@ html {
   padding: 0;
 }
 body {
-  background-image: RADIAL-gradient(circle at 20% 40%, #99cccc 20%, #C2D3FD 40%, #F6DEC9 60%,#C9EEF6 80%);
-  background-size: cover;
   margin: 100px auto 0 auto;
   width: 80%;
   text-align: center;
@@ -16,4 +14,15 @@ canvas {
     left: 0;
   position: absolute;
   z-index: -1;
+}
+
+h1 {
+  color: #97F538;
+}
+h1:hover{
+  color: blue;
+}
+
+h3 {
+  color: blue;
 }
