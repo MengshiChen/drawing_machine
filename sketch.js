@@ -1,37 +1,94 @@
-let array = [];
+//let array = [];
+//let backgroundColor = 200;
+let noiseOffset = 0.0;
+let strokeWidth = 5;
+var c1,c2;
 
 function setup() {
-  createCanvas(600, 600);
-  background(255);
-  strokeWeight(5);
-  noFill();
+  createCanvas(windowWidth, windowHeight);
+  // Define colors
+  c1 = color(255, 204, 0);
+  c2 = color(255);
+  setGradient(c1, c2);
+
 }
 
+
 function draw() {
-  if (mouseIsPressed){
+
+  strokeWeight(strokeWidth);
+
+  noiseOffset += 0.05;
+  strokeWidth = noise (noiseOffset) * 50;
+
+
+
+
+  stroke(map(mouseX, 0, 600, 0, 255, true))
+  line (width - mouseX, height - mouseY, width - pmouseX, height - pmouseY);
+  line (mouseX, mouseY, pmouseX, pmouseY);
+  //* means they are the one.
+  //* if (mouseIsPressed){
+    // minus equal is going to decrease backgroundColor by 2 each frame
+    //*backgroundColor -= 5;
     // stroke(map(mouseX, 0, 600, 255, true));
     // line(width - mouseX, height - mouseY, width - pmouseX, height - pmouseY);
-    // line(mouseX, mouseY, pmouseX, pmouseY);
-    background(0);
-    array.push([mouseX, mouseY]);
-  }
+    //*background(backgroundColor);
+    //line(mouseX, mouseY, pmouseX, pmouseY);
+
+    //*array.push([mouseX, mouseY]);
+
+    //*beginShape();
+  //*  for(let i = 0; i < array.length - 1; i++){
+      // line(array[i][0], array[i][1], array[i + 1][0], array[i + 1][1]);
+    //*  curveVertex(array[i][0], array[i][1]);
+    //* }
+  //*  endShape();
+
+    // line(array[1][0], array[1][1], array[2][0], array[2][1]);
+
+  //*}
+}
+function setGradient(c1, c2) {
+// noprotect
+noFill();
+for (var y = 0; y < height; y++) {
+  var inter = map(y, 0, height, 0, 1);
+  var c = lerpColor(c1, c2, inter);
+  stroke(c);
+  line(0, y, width, y);
+}
 }
 
 function keyTyped(){
   if(key === 's'){
     saveCanvas('fileName', 'PNG');
   }
-  else if(key === 'd'){
-    background(255);
-    beginShape();
-    for(let i = 0; i < array.length - 1; i++){
-      // line(array[i][0], array[i][1], array[i + 1][0], array[i + 1][1]);
-      curveVertex(array[i][0], array[i][1]);
-    }
-    endShape();
+  else if (key === 'c') {
+    //clear the image
+    clear();
 
-    // line(array[1][0], array[1][1], array[2][0], array[2][1]);
+  //else if(key === 'd'){
+    // background(255);
+
+    // beginShape();
+    // for(let i = 0; i < array.length - 1; i++){
+    //   // line(array[i][0], array[i][1], array[i + 1][0], array[i + 1][1]);
+    //   curveVertex(array[i][0], array[i][1]);
+    // }
+    // endShape();
+    //
+    // // line(array[1][0], array[1][1], array[2][0], array[2][1]);
+    //
+
 
 }
   return false;
 }
+
+// function mousePressed () {
+//
+//   array = [];
+//
+//   backgroundColor = 255;
+// }

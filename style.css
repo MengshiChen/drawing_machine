@@ -1,9 +1,19 @@
-html, body {
+html {
   margin: 0;
   padding: 0;
 }
+body {
+  background-image: RADIAL-gradient(circle at 20% 40%, #99cccc 20%, #C2D3FD 40%, #F6DEC9 60%,#C9EEF6 80%);
+  background-size: cover;
+  margin: 100px auto 0 auto;
+  width: 80%;
+  text-align: center;
+  font-family: "courier", monospace;
+}
 canvas {
-  display: block;
-
-  padding: 50px;
+  margin: auto;
+    top: 0;
+    left: 0;
+  position: absolute;
+  z-index: -1;
 }
