@@ -4,6 +4,18 @@
 //let strokeWidth = 5;
 let c1,c2;
 
+function setGradient(c1, c2) {
+// noprotect
+noFill();
+
+for (var y = 0; y < height; y++) {
+  let inter = map(y, 0, height, 0, 1);
+  let c = lerpColor(c1, c2, inter);
+  stroke(c);
+  line(0, y, width, y);
+}
+}
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -14,6 +26,7 @@ function setup() {
   setGradient(c1, c2);
 
 }
+
 
 
 function draw() {
@@ -63,17 +76,7 @@ function draw() {
 
   //*}
 }
-function setGradient(c1, c2) {
-// noprotect
-noFill();
 
-for (var y = 0; y < height; y++) {
-  let inter = map(y, 0, height, 0, 1);
-  let c = lerpColor(c1, c2, inter);
-  stroke(c);
-  line(0, y, width, y);
-}
-}
 
 
 function keyTyped(){
@@ -83,6 +86,17 @@ function keyTyped(){
   else if (key === 'c') {
     //clear the image
     clear();
+    
+    noFill();
+
+    for (var y = 0; y < height; y++) {
+      let inter = map(y, 0, height, 0, 1);
+      let c = lerpColor(c1, c2, inter);
+      stroke(c);
+      line(0, y, width, y);
+    }
+
+
 
   //else if(key === 'd'){
     // background(255);
