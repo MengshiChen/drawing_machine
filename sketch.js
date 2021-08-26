@@ -86,7 +86,6 @@ function keyTyped(){
   else if (key === 'c') {
     //clear the image
     clear();
-    
     noFill();
 
     for (var y = 0; y < height; y++) {
